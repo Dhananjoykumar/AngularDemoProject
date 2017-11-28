@@ -4,8 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 // Layouts
 import { FullLayoutComponent } from 'app/admin-view/layouts/full-layout.component';
 import { SimpleLayoutComponent } from 'app/admin-view/layouts/simple-layout.component';
+// import { LoginComponent } from 'app/pages/login/login.component';
+import { AuthGaurdService } from 'app/pages/service/auth-gaurd.service';
+import { AppComponent } from 'app/app.component';
 
 export const routes: Routes = [
+  // { path: '', component: AppComponent, canActivate: [AuthGaurdService] },
+    
   {
     path: '',
     redirectTo: 'dashboard',

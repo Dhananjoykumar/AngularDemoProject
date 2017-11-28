@@ -1,0 +1,102 @@
+
+<div class="col-md-10 offset-sm-1">
+  <div class="card">
+    <div class="card-header">
+      <strong>Local Body</strong>
+    </div>
+    <div class="card-block" id="form-container">
+      <form novalidate [formGroup]="localbodyForm" (ngSubmit)="saveLocalBody(localbodyForm.value, localbodyForm.valid)">
+        <div class="form-group row">
+          <label class=" col-md-6 form-control-label" for="select">Select State</label>
+          <label class="col-md-6 form-control-label" for="select">Select District</label>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6">
+            <select id="selectStateId" formControlName="StateId" name="StateId" class="form-control" (change)="OnStateChange()">
+              <option value="">--Select State--</option>
+              <option *ngFor="let state of stateList" [value]="state.StateId">{{state.StateName}}</option>
+            </select>
+            <div class="alert" *ngIf="!localbodyForm.controls['StateId'].valid && localbodyForm.controls['StateId'].touched">{{titleAlert}}</div>                                  
+          </div>
+
+          <div class="col-md-6" >
+            <select id="selectDistrictId" formControlName="DistId" name="DistId" class="form-control" (change)="onDistrictChange()">
+              <option value="">--Select District--</option>
+              <option *ngFor="let district of districtList" [value]="district.DistId">{{district.DistName}}</option>
+            </select>
+            <div class="alert" *ngIf="!localbodyForm.controls['DistId'].valid && localbodyForm.controls['DistId'].touched">{{titleAlert}}</div>                                              
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class=" col-md-6 form-control-label" for="select">LocalBody Type</label>
+          <label class="col-md-6 form-control-label" for="select">LocalBody ID</label>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6">
+            <select id="selectLocalBody" formControlName="LocalBodyTypeId" name="LocalBodyTypeId" class="form-control" (change)="divisionChange()">
+              <option value="">--Select LocalBody--</option>
+              <option value="1">Municipal Council</option>
+              <option value="2">Municipal Corporation</option>
+              <option value="3">Zilla Parishad</option>
+              <option value="4">Panchayat Samiti</option>
+              <option value="5">Nagar Panchayat</option>
+              <option value="6">Gram Panchayat</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <input type="text" id="localBodyId" formControlName="LocalBodyId" name="LocalBodyId" class="form-control" placeholder="local body id">
+            <div class="alert" *ngIf="!localbodyForm.controls['LocalBodyId'].valid && localbodyForm.controls['LocalBodyId'].touched">{{titleAlert}}</div>                      
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class=" col-md-6 form-control-label" for="select">LocalBody Name</label>
+          <label class="col-md-6 form-control-label" for="select">Assembly Number</label>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6">
+            <input type="text" id="LocalBodyName" formControlName="LocalBodyName" name="LocalBodyName" class="form-control" placeholder="localbody name">
+            <div class="alert" *ngIf="!localbodyForm.controls['LocalBodyName'].valid && localbodyForm.controls['LocalBodyName'].touched">{{titleAlert}}</div>                                  
+          </div>
+
+          <div class="col-md-6">
+            <input type="text" id="ACNo" formControlName="ACNo" name="ACNo" class="form-control" placeholder="assembly no">
+            <div class="alert" *ngIf="!localbodyForm.controls['ACNo'].valid && localbodyForm.controls['ACNo'].touched">{{titleAlert}}</div>                                              
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label id="gramDivLabel" class=" col-md-6 form-control-label" for="select">Division</label>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6">
+            <input id="gramDivText" formControlName="DivisionId" name="DivisionId" type="text" class="form-control" placeholder="Division">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class=" col-md-6 form-control-label" for="select">Taluka List</label>
+        </div>
+        <div  class="checkboxList">
+          <div *ngFor="let taluka of talukaData; let i = index">
+            <label>
+              <input type="checkbox" id="talukaList"  formControlName="TalukaId"  value={{taluka.TalukaId}} (change)="talukalistArray(taluka.TalukaId, $event)"/>
+              <span>{{taluka.TalukaName}}</span>
+            </label>
+            <div class="alert" *ngIf="!localbodyForm.controls['TalukaId'].valid && localbodyForm.controls['TalukaId'].touched">{{titleAlert}}</div>                                                                                    
+          </div>
+          
+        </div>
+       
+        <br>
+        <br>
+
+        <button type="submit"  class="btn btn-sm btn-primary pull-right"  [disabled]="!localbodyForm.valid">
+         Submit</button>
+      </form>
+    </div>
+  </div>
+
+

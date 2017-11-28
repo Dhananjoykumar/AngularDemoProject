@@ -1,58 +1,36 @@
 <header class="app-header navbar">
   <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">&#9776;</button>
-  <a class="navbar-brand" href="#"></a>
-  
+  <a  href="#">
+    <img src="http://localhost:4200/assets/img.png"  style="height: 100%;width: auto;">
+</a>
   <ul class="nav navbar-nav hidden-md-down">
     <li class="nav-item">
       <a class="nav-link navbar-toggler sidebar-toggler" href="#">&#9776;</a>
     </li>
-    <li class="nav-item px-1">
-      <a class="nav-link" href="#">Dashboard</a>
-    </li>
-    <li class="nav-item px-1">
-      <a class="nav-link" href="#">Users</a>
-    </li>
-    <li class="nav-item px-1">
-      <a class="nav-link" href="#">Settings</a>
-    </li>
+    <li><strong>{{idleState}}</strong>
+      <p *ngIf="lastPing">
+      <!-- <small>Last keepalive ping
+        <strong>{{lastPing | amTimeAgo}}</strong>
+      </small> -->
+    </p>
+    <div *ngIf="timedOut">Restart</div>
+  </li>
   </ul>
   <ul class="nav navbar-nav ml-auto">
-    <li class="nav-item hidden-md-down">
-      <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
-    </li>
-    <li class="nav-item hidden-md-down">
-      <a class="nav-link" href="#"><i class="icon-list"></i></a>
-    </li>
-    <li class="nav-item hidden-md-down">
-      <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
-    </li>
     <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
-        <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-        <span class="hidden-md-down">admin</span>
+        <span class="hidden-md-down">Welcome:  <strong>{{user}}</strong></span>
       </a>
       <div class="dropdown-menu dropdown-menu-right" dropdownMenu aria-labelledby="simple-dropdown">
 
-        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <!-- <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <div class="dropdown-header text-center"><strong>Settings</strong></div> -->
 
-        <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span class="badge badge-info">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Messages<span class="badge badge-success">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> Tasks<span class="badge badge-danger">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Comment<span class="badge badge-warning">42</span></a>
-
-        <div class="dropdown-header text-center"><strong>Settings</strong></div>
-
-        <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
-        <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a>
-        <a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="badge badge-default">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a>
-        <div class="divider"></div>
-        <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock account</a>
-        <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+        <!-- <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a> -->
+        <a class="dropdown-item" [routerLink] = "['/pages/login']" (click)="logOut()"><i class="fa fa-lock"></i> Logout</a>
       </div>
     </li>
     <li class="nav-item hidden-md-down">
-      <a class="nav-link navbar-toggler aside-menu-toggler" href="#">&#9776;</a>
     </li>
   </ul>
   
@@ -63,27 +41,27 @@
     <nav class="sidebar-nav">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
         </li>
         
         <li class="divider"></li>
-        <li class="nav-title">
+        <!-- <li class="nav-title">
           UI Elements
-        </li>
+        </li> -->
         <li class="nav-item nav-dropdown" routerLinkActive="open">
-          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Components</a>
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i>Local Body</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin']"><i class="icon-puzzle"></i> Buttons</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/internalpages/local-body']"><i class="icon-puzzle"></i> Add LocalBody</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['']"><i class="icon-puzzle"></i> Social Buttons</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/internalpages/local-body-table']"><i class="icon-puzzle"></i> LocalBody Table Report</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['']"><i class="icon-puzzle"></i> Cards</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['']"><i class="icon-puzzle"></i> Forms</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/internalpages/crud']"><i class="icon-puzzle"></i> Control Chart Data</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['']"><i class="icon-puzzle"></i> Modals</a>
@@ -92,14 +70,14 @@
               <a class="nav-link" routerLinkActive="active" [routerLink]="['']"><i class="icon-puzzle"></i> Switches</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['']"><i class="icon-puzzle"></i> Tables</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/internalpages/control-chart-table']"><i class="icon-puzzle"></i> Control Chart Table</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['']"><i class="icon-puzzle"></i> Tabs</a>
-            </li>
+            </li> -->
           </ul>
         </li>
-        <li class="nav-item nav-dropdown" routerLinkActive="open">
+        <!-- <li class="nav-item nav-dropdown" routerLinkActive="open">
           <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Icons</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
@@ -109,8 +87,8 @@
               <a class="nav-link" routerLinkActive="active" [routerLink]="['']"><i class="icon-star"></i> Simple Line Icons</a>
             </li>
           </ul>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['']"><i class="icon-calculator"></i> Widgets <span class="badge badge-info">NEW</span></a>
         </li>
         <li class="nav-item">
@@ -119,8 +97,8 @@
         <li class="divider"></li>
         <li class="nav-title">
           Extras
-        </li>
-        <li class="nav-item nav-dropdown">
+        </li> -->
+        <!-- <li class="nav-item nav-dropdown">
           <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Pages</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
@@ -136,7 +114,7 @@
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/500']"><i class="icon-star"></i> Error 500</a>
             </li>
           </ul>
-        </li>
+        </li> -->
         
       </ul>
     </nav>
@@ -421,6 +399,6 @@
 </div>
 
 <footer class="app-footer">
-  <a href="http://coreui.io">CoreUI</a> &copy; 2017 creativeLabs.
-  <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a></span>
+  <!-- <a href="http://coreui.io">CoreUI</a> &copy; 2017 creativeLabs.
+  <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a></span> -->
 </footer>
