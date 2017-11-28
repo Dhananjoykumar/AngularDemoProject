@@ -1,0 +1,168 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Candidate Daily Expenses</strong>
+        </div>
+        <div class="card-block">
+          <form novalidate [formGroup]="candidateExpenseForm" (ngSubmit)="saveDailyExp(candidateExpenseForm.value, candidateExpenseForm.valid)"
+            class="form-horizontal ">
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="date-input">Date</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="date" id="date-input" name="date-input" class="form-control" formControlName="Date">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="select">Expense Head</label>
+              <label class="col-md-4 form-control-label" for="select">SubExpense Head</label>
+              <label class="col-md-4 form-control-label">Standard Rate</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <select id="selectExpenseHead" name="selectExpenseHead" class="form-control" size="1" (change)="onExpenseChange()" formControlName="ExpenseType">
+                  <option value="">Select Value</option>
+                  <option *ngFor="let e of expense" [value]="e.EID">{{e.ExpenseTypeT}}</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <select id="selectExpensesSubHead" name="selectExpensesSubHead" class="form-control" size="1" (change)="onSubExpenseChange()"
+                  formControlName="SubExpenseType">
+                  <option value="">Select value</option>
+                  <option *ngFor="let se of subExp;let i = index" [value]="se.SEID">{{se.SubExpenseType}}</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="standardrate-input" name="standardrate-input" class="form-control" formControlName="StandardRate"
+                  placeholder="Enter Standard Rate">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label">Unit</label>
+              <label class="col-md-4 form-control-label" for="quantity-input">Area/Size/Quantity</label>
+              <label class="col-md-2 form-control-label" for="rate-input">Your Rate</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="text" id="unit-input" name="unit-input" class="form-control" formControlName="Unit" placeholder="Enter Unit">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="quantity" name="quantity" class="form-control" formControlName="Qty_Size_Area" placeholder="Enter Area/Size/Quantity">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="rate-input" name="rate-input" class="form-control" formControlName="Rate" placeholder="Enter Rate"
+                  (change)="calculateAmount()">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label">Payment Type</label>
+              <label class="col-md-4 form-control-label">Payment Mode</label>
+              <label class="col-md-4 form-control-label" for="cheque-input" id="cheque-label">Cheque No.</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label class="radio-inline" for="inline-radio1">
+                  <input type="radio" id="full-payment" name="PaymentType" value="1" formControlName="PaymentType" (click)="readOnlyActive()"> Full Payment&nbsp;&nbsp;
+                </label>
+                <label class="radio-inline" for="inline-radio2">
+                  <input type="radio" id="partial-payment" name="PaymentType" value="2" formControlName="PaymentType" (click)="readOnlyDeactive()"> Partial Payment&nbsp;&nbsp;
+                </label>
+              </div>
+              <div class="col-md-4">
+                <label class="radio-inline" for="cash">
+                  <input type="radio" id="cash" name="PaymentMode" value="1" formControlName="PaymentMode" (click)="checkPaymentMode()"> Cash&nbsp;&nbsp;
+                </label>
+                <label class="radio-inline" for="cheque">
+                  <input type="radio" id="cheque" name="PaymentMode" value="2" formControlName="PaymentMode" (click)="checkPaymentMode()"> Cheque&nbsp;&nbsp;
+                </label>
+                <label class="radio-inline" for="card">
+                  <input type="radio" id="card" name="PaymentMode" value="3" formControlName="PaymentMode" (click)="checkPaymentMode()"> Card&nbsp;&nbsp;
+                </label>
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="cheque-input" name="cheque-input" class="form-control" formControlName="ChequeNo" placeholder="Enter Cheque No.">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="email-input">Total</label>
+              <label class="col-md-4 form-control-label" for="amount-input" id="amount-label">Amount</label>
+              <label class="col-md-4 form-control-label" for="balance-input" id="balance-label">Balance Payment</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="text" id="total-input" name="total-input" class="form-control" formControlName="TotalExpense" placeholder="Enter Total">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="amount-input" name="amount-input" [readonly]="isReadonly ? '' : null" class="form-control" formControlName="PaidAmount"
+                  (change)="calculateBalance()" placeholder="Enter Amount">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="balance-input" name="balance-input" class="form-control" formControlName="BalancePayment" placeholder="Enter Bal. Payment">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="billno-input">Bill No.</label>
+              <label class="col-md-4 form-control-label" for="email-input">Vendor/Service Provider Name</label>
+              <label class="col-md-4 form-control-label" for="email-input">Vendor/Service Provider Mob. No.</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="text" id="billno-input" name="billno-input" class="form-control" formControlName="InvoiceNo" placeholder="Enter Bill No.">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="providername-input" name="providername-input" class="form-control" formControlName="FirmName" placeholder="Enter Provider Name">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="providermobno-input" name="providermobno-input" class="form-control" formControlName="FirmOwnerMobNo"
+                  placeholder="Enter Provider Mobile Number">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label">Source of Expense</label>
+              <label class="col-md-4 form-control-label" id="personname-label" for="person-name">Party/Other Person Name</label>
+              <label class="col-md-4 form-control-label" id="personmobno-label" for="person-mobno">Party/Other Person Mob. No.</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label class="radio-inline" for="inline-radio1">
+                  <input type="radio" id="self-radio" name="SourceOfExpense" value="Self " formControlName="SourceOfExpense" (click)="checkSourceOfExpense()"> Self
+                </label>
+                <label class="radio-inline" for="inline-radio2">
+                  <input type="radio" id="party-radio" name="SourceOfExpense" value="By Party " formControlName="SourceOfExpense" (click)="checkSourceOfExpense()"> By Party
+                </label>
+                <label class="radio-inline" for="inline-radio2">
+                  <input type="radio" id="other-radio" name="SourceOfExpense" value="By Other " formControlName="SourceOfExpense" (click)="checkSourceOfExpense()"> By Other
+                </label>
+              </div>
+              <div class="col-md-4">
+                <input type="text" style="display:block" id="person-name" name="person-name" class="form-control" formControlName="PartyName"
+                  placeholder="Enter Person Name">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="person-mobno" name="person-mobno" class="form-control" formControlName="PartyNo" placeholder="Enter Person Mobile Number">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label">Description</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <textarea maxlength="200" id="description" name="address-input" rows="9" class="form-control" formControlName="Description"
+                  placeholder="Please Enter Description Here..."></textarea>
+              </div>
+            </div>
+            <div class="text-right">
+              <button type="submit" class="btn btn-sm btn-primary">
+                <i class="fa fa-dot-circle-o"></i> Submit</button>
+              <button type="reset" class="btn btn-sm btn-danger">
+                <i class="fa fa-ban"></i> Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

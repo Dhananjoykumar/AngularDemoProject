@@ -1,0 +1,165 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-md-12">
+      <div class="card" id="divProformaData">
+        <div class="card-header">
+          <div style="height: 9px"></div>
+          <div align="Center" style="font-size: large; font-weight: bold">नमुना-४</div>
+          <div style="height: 9px"></div>
+          <div align="Center" style="font-size: small; font-weight: bold">(निकाल घोषित झाल्यापासून ३० दिवसाच्या आत सादर करावे)</div>
+          <div align="Center" style="font-size: large; font-weight: bold">उमेदवार - निधीबाबतचा तपशिल (देणगी, भेट, कर्ज, पक्ष निधी इ.)</div>
+        </div>
+        <div class="card-block">
+          <div style="height: 9px"></div>
+          <div style="height: 9px"></div>
+          <div style="border: groove">
+            <table style="width: 100%;">
+              <tr>
+                <td class="auto-style1">उमेदवाराचे नाव :</td>
+                <td>
+                  <span id="MainContent_lblcandidateName">{{extraDetails.FullName}}</span>
+                </td>
+                <td class="auto-style2">जिल्ह्याचे नाव:</td>
+                <td>
+                  <span id="MainContent_lblDistrictNm">{{extraDetails.DistName}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="auto-style1">पक्षाचे नाव :</td>
+                <td>
+                  <span id="MainContent_lblParty">{{extraDetails.PartyName}}</span>
+                </td>
+                <td class="auto-style2">सार्वत्रिक\पोट निवडणूक:</td>
+                <td>
+                  <span id="MainContent_lblElection">{{extraDetails.ElectionTypeName}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="auto-style1">स्थानिक स्वराज्य संस्थेचे नाव :</td>
+                <td>
+                  <span id="MainContent_lblLocalBodyId">{{extraDetails.LocalBodyName}}</span>
+                </td>
+                <td class="auto-style2">मतदानाचा दिनांक:</td>
+                <td>
+                  <span id="MainContent_lblVotingDate">{{extraDetails.ElectionDate}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="auto-style1">प्रभाग/गण/गट क्रमांक :</td>
+                <td>
+                  <span id="MainContent_lblWardNo">{{extraDetails.WardNo}}</span>
+                </td>
+                <td class="auto-style2">दिनांक:</td>
+                <td>
+                  <span id="MainContent_lblExpenseDate">{{currDate}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="auto-style1">जागा / seat क्र :</td>
+                <td>
+                  <span id="MainContent_lblSeat">{{extraDetails.SeatName}}</span>
+                </td>
+                <td class="auto-style2">&nbsp;</td>
+                <td>
+                  <span id="MainContent_Label9"></span>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div style="height: 9px"></div>
+          <div style="height: 9px"></div>
+          <table class="table table-bordered" id="dataTable">
+            <thead>
+              <tr>
+                <th>अ.क्</th>
+                <th>निधी देणाऱ्याचा नाव व पत्ता</th>
+                <th>निधी देणाऱ्याचा संपर्क क्र्रमंक</th>
+                <th>दिनांक</th>
+                <th>रोख / चेक / डी. डी. / इतर प्र्रकार</th>
+                <th>देणाऱ्याचा बँकेचे नाव व शाखा</th>
+                <th>निधीचा प्रकार (देणगी, भेट, कर्ज इ.)</th>
+                <th>रक्कम</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let activeData of activeFundData">
+                <td>{{activeData.FundID}}</td>
+                <td>{{activeData.ProviderName}}</td>
+                <td>{{activeData.ProviderMobileNo}}</td>
+                <td>{{activeData.Date}}</td>
+                <td>{{activeData.PaidBy}}</td>
+                <td>{{activeData.ProviderBankName}}</td>
+                <td>{{activeData.FundTypeText}}</td>
+                <td>{{activeData.Amount}}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>एकूण</td>
+                <td>{{totalAmount}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="height: 9px"></div>
+          <table>
+            <tr>
+              <td style="padding-left: 10px">
+                <span id="MainContent_lbldateDetails">दिनांक .............रोजी ...........वा मी निधीबाबतचा तपशिल नमुना ४ सदर करत आहे.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="height: 27px"></td>
+            </tr>
+            <tr>
+              <td style="text-align: right">
+                <span id="MainContent_lblSignatureCandidate">उमेदवाराची सही</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 10px">
+                <span id="MainContent_lblDailyExpenseSample">सदर निधीबाबतचा तपशिल नमुना ४, दिनांक .............रोजी ...........वा मला प्राप्त झाला.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="height: 27px"></td>
+            </tr>
+            <tr>
+              <td style="padding-left: 570px">
+                <span id="MainContent_lblOfficerSign">सही निवडणूक निर्णय अधिकारी प्रभाग / गण / गट .......स्थानिक स्वराज्य संस्था </span>
+              </td>
+            </tr>
+            <tr>
+              <td>टीप :
+                <span id="MainContent_lblTip1" style="padding-left: 5px">(१) दररोज खर्च नोंदवून सदर नमुना १ दुसऱ्या दिवशी दुपार २ वाजे पर्यंत निवडणूक निर्णय अधिकारी यांना सादर करावा.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 37px">
+                <span id="MainContent_lblTip2">(2) सादर करतेवेळी उमेदवाराने न चुकता पोहोच घ्यावी. सदर पोहोच हि भविष्यात उमेदवाराला बचावासाठी उपयोगी होऊ
+                  शकेल.
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 37px">
+                <span id="MainContent_lblTip3">(३) ओंन लाईन पद्धतीने खर्च भरल्यास सदर नमुना ऑटोमॅटिक तयार होईल. उमेदवाराने फक्त नमुना डाऊनलोड करून, तपासून,
+                  प्रिंट करून, सही करून, (१) प्रमाणे सादर करावा.</span>
+              </td>
+            </tr>
+          </table>
+          <div style="height: 9px"></div>
+          <div style="height: 9px"></div>
+          <div class="col-md-5">
+            <button type="button" id="btnPrint" class="btn btn-primary" (click)="Print()">Print</button>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</div>

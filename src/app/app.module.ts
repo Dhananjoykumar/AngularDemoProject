@@ -24,6 +24,11 @@ import { AsideToggleDirective } from 'app/admin-view/commons/aside.directive';
 import { BreadcrumbsComponent } from 'app/admin-view/commons/breadcrumb.component';
 import { FullLayoutComponent } from 'app/admin-view/layouts/full-layout.component';
 import { SimpleLayoutComponent } from 'app/admin-view/layouts/simple-layout.component';
+import { CandidateDailyExpenseComponent } from 'app/admin-view/internal-pages/candidate-daily-expense/candidate-daily-expense.component';
+import { ExpenseService } from 'app/admin-view/shared/expense.service';
+import { HttpModule } from '@angular/http/src/http_module';
+import { FormBuilder } from '@angular/forms/src/form_builder';
+import { FundCollectionDetailsComponent } from 'app/admin-view/internal-pages/fund-collection-details/fund-collection-details.component';
 // import { LoginComponent } from './login/login.component';
 // import { AdminViewComponent } from './admin-view/admin-view.component';
 
@@ -33,7 +38,8 @@ import { SimpleLayoutComponent } from 'app/admin-view/layouts/simple-layout.comp
     AppRoutingModule,
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    HttpModule
   ],
   declarations: [
     AppComponent,
@@ -49,7 +55,12 @@ import { SimpleLayoutComponent } from 'app/admin-view/layouts/simple-layout.comp
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  },
+  CandidateDailyExpenseComponent,
+  ExpenseService,
+  FormBuilder,
+  FundCollectionDetailsComponent
+],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

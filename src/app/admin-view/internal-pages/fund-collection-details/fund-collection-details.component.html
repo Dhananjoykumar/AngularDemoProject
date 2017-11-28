@@ -1,0 +1,252 @@
+<div class="animated fadeIn">
+  <!--/.row-->
+  <div class="row">
+    <!-- <div class="col-sm-1"></div> -->
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Fund Collection Details</strong>
+        </div>
+        <div class="card-block">
+          <form novalidate [formGroup]="fundCollection" class="form-horizontal ">
+              <!-- action="" method="post" enctype="multipart/form-data" -->
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="date-input">Date</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="date" id="date-input" name="date-input" class="form-control" formControlName="Date">
+                <!-- [(ngModel)]="model.FDate" *ngIf="isEditable == false" -->
+                <!-- <input type="date" id="date-input" *ngIf="isEditable == true" [(ngModel)]="model2.FDate" name="date-input" class="form-control"> -->
+                    <!-- <span class="help-block">This is a help text</span> -->
+              </div>
+              <!-- <input type="text" (ngModel)="fundDetail.FundId" [ngModel]="tempFund.FundId" hidden #Id> -->
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="selectFrom">From</label>
+              <label class="col-md-4 form-control-label" for="selectFundType">Select Fund Type</label>
+              <label class="col-md-4 form-control-label" for="selectPaidBy">Paid By</label>
+            </div>           
+            <div class="form-group row">
+                <div class="col-md-4">
+                  <select id="selectFrom" name="selectFrom" class="form-control" size="1" formControlName="FromWhom" (change)="onSelectFromItem()">
+                      <!-- *ngIf="isEditable == false" [(ngModel)]="model.From" -->
+                    <option value="0">Please Select From</option>
+                    <option value="1">Self</option>
+                    <option value="2">Party</option>
+                    <option value="3">Supporter</option>
+                    <option value="4">Relative</option>
+                    <option value="5">Friend</option>
+                    <option value="6">Well Wisher</option>
+                  </select>
+                  <!-- <select id="selectFrom" name="selectFrom" class="form-control" size="1" *ngIf="isEditable == true" [(ngModel)]="model2.From" (change)="onSelectFromItem()">
+                      <option value="0">Please Select From</option>
+                      <option value="1">Self</option>
+                      <option value="2">Party</option>
+                      <option value="3">Supporter</option>
+                      <option value="4">Relative</option>
+                      <option value="5">Friend</option>
+                      <option value="6">Well Wisher</option>
+                    </select> -->
+                  </div>
+                <div class="col-md-4">
+                  <select id="selectFundType" name="selectFundType" class="form-control" size="1" formControlName="FundType">
+                      <!-- *ngIf="isEditable == false" [(ngModel)]="model.FundType" -->
+                    <option value="0">Please Select Fund Type</option>
+                    <option value="1">Donation</option>
+                    <option value="2">Gift</option>
+                    <option value="3">Loan</option>
+                    <option value="4">Offer</option>
+                    <option value="5">Cash In Hand</option>
+                  </select>
+                  <!-- <select id="selectFundType" name="selectFundType" class="form-control" size="1" *ngIf="isEditable == true" [(ngModel)]="model2.FundType">
+                      <option value="0">Please Select Fund Type</option>
+                      <option value="1">Donation</option>
+                      <option value="2">Gift</option>
+                      <option value="3">Loan</option>
+                      <option value="4">Offer</option>
+                      <option value="5">Cash In Hand</option>
+                    </select> -->
+                </div>
+                <div class="col-md-4">
+                  <select id="selectPaidBy" name="selectPaidBy" class="form-control" size="1" formControlName="PaidBy" (change)="onSelectPaidBy()">
+                      <!-- *ngIf="isEditable == false" [(ngModel)]="model.PaidBy" -->
+                    <option value="0">Please Select Paid By</option>
+                    <option value="1">Cash</option>
+                    <option value="2">Cheque</option>
+                    <option value="3">Other</option>
+                  </select>
+                  <!-- <select id="selectPaidBy" name="selectPaidBy" class="form-control" size="1" *ngIf="isEditable == true" [(ngModel)]="model2.PaidBy" (change)="onSelectPaidBy()">
+                      <option value="0">Please Select Paid By</option>
+                      <option value="1">Cash</option>
+                      <option value="2">Cheque</option>
+                      <option value="3">Other</option>
+                    </select> -->
+                </div>
+              <!-- <label class="col-md-2 form-control-label">Standard Rate Unit</label> -->
+              <!-- <div class="form-group row"> -->
+                <!-- </div> -->
+                
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="amount-input">Amount</label>
+              <label class="col-md-4 form-control-label" for="chequedetails-input" id="chequedetails-label">Cheque No./Other Details</label>
+              <label class="col-md-4 form-control-label" for="bankname-input" id="bankname-label">Provider's Bank Name</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="text" id="amount-input" name="amount-input" class="form-control" formControlName="Amount" placeholder="Enter Amount">
+                <!-- *ngIf="isEditable == false" [(ngModel)]="model.Amount" -->
+                <!-- <input type="text" id="amount-input" name="amount-input" *ngIf="isEditable == true" class="form-control" [(ngModel)]="model2.Amount" placeholder="Enter Amount"> -->
+                        <!-- <span class="help-block">Please enter your email</span>  -->
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="chequedetails-input" name="chequedetails-input" class="form-control" formControlName="CheckNo" placeholder="Enter Cheque No./Other Details">
+                <!-- *ngIf="isEditable == false" [(ngModel)]="model.ChequeNo" -->
+                <!-- <input type="text" id="chequedetails-input" name="chequedetails-input" *ngIf="isEditable == true" class="form-control" [(ngModel)]="model2.ChequeNo" placeholder="Enter Cheque No./Other Details"> -->
+                          <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+              <div class="col-md-4">
+                  <input type="text" id="bankname-input" name="bankname-input" class="form-control" formControlName="ProviderBankName" placeholder="Enter Provider's Bank Name">
+                  <!-- *ngIf="isEditable == false" [(ngModel)]="model.ProviderBankName" -->
+                  <!-- <input type="text" id="bankname-input" name="bankname-input" class="form-control" *ngIf="isEditable == true" [(ngModel)]="model2.ProviderBankName" placeholder="Enter Provider's Bank Name"> -->
+                    <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="providername-input" id="providername-label">Provider Name</label>
+              <label class="col-md-4 form-control-label" for="providermobno-input" id="providermobno-label">Mobile No.</label>
+              <label class="col-md-2 form-control-label" for="address-input">Address</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="text" id="providername-input" name="providername-input" class="form-control" formControlName="ProviderName" placeholder="Enter Provider Name">
+                <!-- *ngIf="isEditable == false" [(ngModel)]="model.ProviderName" -->
+                <!-- <input type="text" id="providername-input" name="providername-input" class="form-control" *ngIf="isEditable == true" [(ngModel)]="model2.ProviderName" placeholder="Enter Provider Name"> -->
+                      <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="providermobno-input" name="providermobno-input" class="form-control" formControlName="ProviderMobileNo" placeholder="Enter Mobile No.">
+                <!-- *ngIf="isEditable == false" [(ngModel)]="model.MobileNo" -->
+                <!-- <input type="text" id="providermobno-input" name="providermobno-input" class="form-control" *ngIf="isEditable == true" [(ngModel)]="model2.MobileNo" placeholder="Enter Mobile No."> -->
+                        <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="address-input" name="address-input" rows="9" class="form-control" formControlName="Address" placeholder="Please Enter Address Here...">
+                <!-- *ngIf="isEditable == false" [(ngModel)]="model.address" -->
+                <!-- <input type="text" id="address-input" name="address-input" rows="9" class="form-control" *ngIf="isEditable == true" [(ngModel)]="model2.address" placeholder="Please Enter Address Here..."> -->
+              </div>   
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary" (click)="insertFundDetail()"><i class="fa fa-dot-circle-o"></i> Submit</button>
+          <!-- *ngIf="isEditable == false" -->
+          <!-- <button type="submit" *ngIf="isEditable == true" class="btn btn-sm btn-primary" (click)="updateFundDetail()"><i class="fa fa-dot-circle-o"></i> Update</button> -->
+          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-sm-1"></div> -->
+  </div>
+  <!-- <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header">
+                <i class="fa fa-align-justify"></i> Old Fund Details
+              </div>
+              <div class="card-block">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Date registered</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+      
+                    </tr>
+                  </tbody>
+                </table> -->
+                <!-- <nav>
+                  <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                    <li class="page-item active">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+                </nav> -->
+              <!-- </div>
+            </div>
+          </div> -->
+          <!--/.col-->
+        <!-- </div> -->
+        <!-- <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <i class="fa fa-align-justify"></i> New Fund Details
+                  </div>
+                  <div class="card-block">
+                    <table class="table table-bordered table-striped table-condensed">
+                      <thead>
+                        <tr>
+                          <th>Fund Id</th>
+                          <th>Date</th>
+                          <th>From Whom</th>
+                          <th>Fund Type</th>
+                          <th>Amount</th>
+                          <th>Paid By</th>
+                          <th>Cheque No.</th>
+                          <th>Bank Name</th>
+                          <th>Address</th>
+                          <th>Mobile No.</th>
+                          <th>Action</th>
+                          <th>Edit</th>                            
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let fund of fundDetails;let i = index">
+                          <td>{{fund.FundId}}</td> -->
+                          <!-- <td>{{i}}</td> -->
+                          <!-- <td>{{fund.FDate}}</td>
+                          <td>{{fund.From}}</td>
+                          <td>{{fund.FundType}}</td>
+                          <td>{{fund.Amount}}</td>
+                          <td>{{fund.PaidBy}}</td>
+                          <td>{{fund.ChequeNo}}</td>
+                          <td>{{fund.ProviderBankName}}</td>
+                          <td>{{fund.address}}</td>
+                          <td>{{fund.MobileNo}}</td>
+                          <td>
+                            <i *ngIf="fund.isActive == 0" class="fa fa-check fa-lg mt-2" (click)="activateFund(i)" title="Activate"></i>
+                            <i *ngIf="fund.isActive == 1" class="fa fa-close fa-lg mt-2" (click)="activateFund(i)" title="Deactivate"></i>
+                          </td>
+                          <td><i class="fa fa-edit fa-lg mt-2" title="Edit" (click)="editFundDetail(i)"></i></td>
+                        </tr>
+                      </tbody>
+                    </table> -->
+                    <!-- <nav>
+                      <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                        <li class="page-item active">
+                          <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                      </ul>
+                    </nav> -->
+                  <!-- </div>
+                </div>
+              </div> -->
+              <!--/.col-->
+            <!-- </div> -->
