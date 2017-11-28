@@ -1,0 +1,197 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" id="divProformaData">
+        <div class="card-header">
+          <div style="height: 9px"></div>
+          <div align="Center" style="font-size: large; font-weight: bold">नमुना-१</div>
+          <div style="height: 9px"></div>
+          <div align="Center" style="font-size: large; font-weight: bold">उमेदवार - दैनंदिन निवडणूक खर्च</div>
+          <div align="Center" style="font-size: small; font-weight: bold">(उमेदवारांनी नामनिर्देशन दाखल केलेल्या दिनांकापासून ते निकाल लागेपर्यंत दररोज सादर करावे)</div>
+        </div>
+        <div class="card-block">
+          <div style="height: 9px"></div>
+          <div style="height: 9px"></div>
+          <div style="border: groove">
+            <table style="width: 100%;">
+              <tr>
+                <td class="auto-style1">उमेदवाराचे नाव :</td>
+                <td>
+                  <span id="MainContent_lblcandidateName">{{extraDetails.FullName}}</span>
+                </td>
+                <td class="auto-style2">जिल्ह्याचे नाव:</td>
+                <td>
+                  <span id="MainContent_lblDistrictNm">{{extraDetails.DistName}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="auto-style1">पक्षाचे नाव :</td>
+                <td>
+                  <span id="MainContent_lblParty">{{extraDetails.PartyName}}</span>
+                </td>
+                <td class="auto-style2">सार्वत्रिक\पोट निवडणूक:</td>
+                <td>
+                  <span id="MainContent_lblElection">{{extraDetails.ElectionTypeName}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="auto-style1">स्थानिक स्वराज्य संस्थेचे नाव :</td>
+                <td>
+                  <span id="MainContent_lblLocalBodyId">{{extraDetails.LocalBodyName}}</span>
+                </td>
+                <td class="auto-style2">मतदानाचा दिनांक:</td>
+                <td>
+                  <span id="MainContent_lblVotingDate">{{extraDetails.ElectionDate}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="auto-style1">प्रभाग/गण/गट क्रमांक :</td>
+                <td>
+                  <span id="MainContent_lblWardNo">{{extraDetails.WardNo}}</span>
+                </td>
+                <td class="auto-style2">दिनांक:</td>
+                <td>
+                  <span id="MainContent_lblExpenseDate">{{currDate}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="auto-style1">जागा / seat क्र :</td>
+                <td>
+                  <span id="MainContent_lblSeat">{{extraDetails.SeatName}}</span>
+                </td>
+                <td class="auto-style2">&nbsp;</td>
+                <td>
+                  <span id="MainContent_Label9"></span>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div style="height: 9px"></div>
+          <div style="height: 9px"></div>
+          <table class="table table-bordered" id="dataTable">
+            <thead>
+              <th>अ.क्र्</th>
+              <th>खर्चाची मुख्य बाब</th>
+              <th>खर्चाची आंतर बाब</th>
+              <th>संख्या / क्षेत्रफळ/ दिवस</th>
+              <th>प्रति दर</th>
+              <th>एकूण खर्च (रोख आणि उधारी मिळून)</th>
+              <th>चेक / रोखीने</th>
+              <th>कोणास दिले / कोणास देणे बाकी</th>
+              <th>पावती / बिल / व्हाउचर</th>
+              <th>स्वतःचा की / पक्षाचा की / इतर व्यक्तीचा</th>
+              <th>पक्षाचा की / इतर यतीचा नाव</th>
+              <th>पक्षाचा केलेल्या खर्चाच्या बाबत पक्षाचे नाव / इतर व्यक्तिने केलेल्या खर्चाच्या बाबत त्याचा तपशिल नाव, पत्ता,
+                मोबाईल नंबर ई.</th>
+            </thead>
+            <tbody>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+            </tbody>
+          </table>
+          <div style="height: 9px"></div>
+          <table>
+            <tr>
+              <td style="padding-left: 10px">
+                <span id="MainContent_lbldateDetails">दिनांक .............रोजी ...........वा मी दैनंदिन खर्चाचा नमुना १ सदर करत आहे.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="height: 27px"></td>
+            </tr>
+            <tr>
+              <td style="text-align: right">
+                <span id="MainContent_lblSignatureCandidate">उमेदवाराची सही</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 10px">
+                <span id="MainContent_lblDailyExpenseSample">सदर दैनंदिन खर्चाचा नमुना १, दिनांक .............रोजी ...........वा मला प्राप्त झाला.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="height: 27px"></td>
+            </tr>
+            <tr>
+              <td style="padding-left: 570px">
+                <span id="MainContent_lblOfficerSign">सही निवडणूक निर्णय अधिकारी प्रभाग / गण / गट .......स्थानिक स्वराज्य संस्था </span>
+              </td>
+            </tr>
+            <tr>
+              <td>टीप :
+                <span id="MainContent_lblTip1" style="padding-left: 5px">(१) दररोज खर्च नोंदवून सदर नमुना १ दुसऱ्या दिवशी दुपार २ वाजे पर्यंत निवडणूक निर्णय अधिकारी यांना सादर करावा.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 37px">
+                <span id="MainContent_lblTip2">(2) सादर करतेवेळी उमेदवाराने न चुकता पोहोच घ्यावी. सदर पोहोच हि भविष्यात उमेदवाराला बचावासाठी उपयोगी होऊ
+                  शकेल.
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 37px">
+                <span id="MainContent_lblTip3">(३) ओंन लाईन पद्धतीने खर्च भरल्यास सदर नमुना ऑटोमॅटिक तयार होईल. उमेदवाराने फक्त नमुना डाऊनलोड करून, तपासून,
+                  प्रिंट करून, सही करून, (१) प्रमाणे सादर करावा.</span>
+              </td>
+            </tr>
+          </table>
+          <div style="height: 9px"></div>
+          <div style="height: 9px"></div>
+          <div class="col-md-5">
+            <button type="button" id="btnPrint" class="btn btn-primary" (click)="Print()">Print</button>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="dataSource"> -->
+
+<!-- Position Column -->
+<!-- <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container> -->
+
+<!-- Name Column -->
+<!-- <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container> -->
+
+<!-- Weight Column -->
+<!-- <ng-container matColumnDef="weight">
+          <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+        </ng-container> -->
+
+<!-- Color Column -->
+<!-- <ng-container matColumnDef="symbol">
+          <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+        </ng-container> -->
+
+<!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table> -->
+
+<!-- <mat-paginator #paginator
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 20]">
+      </mat-paginator>
+    </div> -->

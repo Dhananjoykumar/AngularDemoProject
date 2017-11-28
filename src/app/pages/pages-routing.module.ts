@@ -3,9 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { P404Component } from './404.component';
 import { P500Component } from './500.component';
-// import { LoginComponent } from 'app/pages/login.component';
+import { LoginComponent } from 'app/pages/login.component';
 import { RegisterComponent } from 'app/pages/register.component';
-import { LoginComponent } from 'app/pages/login/login.component';
 
 const routes: Routes = [
   {

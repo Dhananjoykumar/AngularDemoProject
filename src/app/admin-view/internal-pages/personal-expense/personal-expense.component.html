@@ -1,0 +1,100 @@
+<div class="card">
+  <div class="card-header">
+    Daily Expenses
+    <!-- <strong>Sizes</strong> -->
+  </div>
+  <div class="card-block">
+    <form action="" method="post" class="form-horizontal ">
+      <div class="form-group row">
+        <label class="col-sm-3 form-control-label" for="input-normal">Select Date</label>
+        <div class="col-sm-6">
+          <input type="date" id="expense-date" name="expense-date" class="form-control">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer">
+    <button type="submit" class="btn btn-sm btn-primary" (click)="searchExpense()"><i class="fa fa-dot-circle-o"></i> Show Data</button>
+    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Back</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> Combined All Table
+      </div>
+      <div class="card-block">
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Date</th>
+              <th>Expense Head</th>
+              <th>Sub Expense Head</th>
+              <th>Quantity</th>
+              <th>Rate</th>
+              <th>Cash</th>
+              <th>Recipt</th>
+              <th>Self/Party</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let expense of expenseDetails; let i =index">
+              <td>{{expense.Id}}</td>
+              <td>{{expense.Date}}</td>
+              <td>{{expense.ExpenseTypeText}}</td>
+              <td>{{expense.SubExpenseTypeText}}</td>
+              <td>{{expense.Qty_Size_Area}}</td>
+              <td>{{expense.StandardRate}}</td>
+              <td>{{expense.PaymentTypeText}}</td>
+              <td>{{expense.InvoiceNo}}</td>
+              <td>{{expense.SourceOfExpense}}</td>
+              <td>{{expense.TotalExpense}}</td>
+            </tr>
+            <tr>
+            </tr>
+            <!-- <tr>
+              <td>Einar Randall</td>
+              <td>2012/02/01</td>
+              <td>Admin</td>
+              <td>
+                <span class="badge badge-default">Inactive</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Félix Troels</td>
+              <td>2012/03/01</td>
+              <td>Member</td>
+              <td>
+                <span class="badge badge-warning">Pending</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Aulus Agmundr</td>
+              <td>2012/01/21</td>
+              <td>Staff</td>
+              <td>
+                <span class="badge badge-success">Active</span>
+              </td>
+            </tr> -->
+          </tbody>
+        </table>
+        <!-- <nav>
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav> -->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>

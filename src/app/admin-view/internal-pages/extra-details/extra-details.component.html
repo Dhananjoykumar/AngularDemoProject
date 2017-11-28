@@ -1,0 +1,196 @@
+<div class="animated fadeIn">
+  <!--/.row-->
+  <div class="row">
+    <!-- <div class="col-sm-1"></div> -->
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Extra Details</strong>
+        </div>
+        <div class="card-block">
+          <form [formGroup]="extraDetails" class="form-horizontal">
+              <!-- action="" method="post" enctype="multipart/form-data" -->
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="select">Candidate Name</label>
+              <label class="col-md-4 form-control-label" for="select">Mobile No.</label>
+              <label class="col-md-4 form-control-label">Age</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <!-- <label class="col-md-2 form-control-label"></label> -->
+                <input type="text" id="candidatename-input" name="candidatename-input" class="form-control" formControlName="Name">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="mobileno-input" name="mobileno-input" class="form-control" formControlName="MobileNo">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="email-input" name="email-input" class="form-control" formControlName="Age" placeholder="Enter Age">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="text-input">Nomination Date</label>
+              <label class="col-md-4 form-control-label" for="text-input">Election Date</label>
+              <label class="col-md-4 form-control-label" for="text-input">Father/Husband Name</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="date" id="text-input" name="text-input" formControlName="NominationDate" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <input type="date" id="text-input" name="text-input" formControlName="ElectionDate" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="email-input" name="email-input" formControlName="FatherName" class="form-control" placeholder="Enter Father/Husband">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label">Place</label>
+              <label class="col-md-4 form-control-label" for="email-input">Party Type</label>
+              <label class="col-md-4 form-control-label" for="email-input">Party Name</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="text" id="email-input" name="email-input" formControlName="Place" class="form-control" placeholder="Enter Place">
+              </div>
+              <div class="col-md-4">
+                <select id="partyType" name="PartyTypeID" formControlName="PartyTypeID" class="form-control" size="1" (change)="getPartyName()">
+                  <option value="0">Please select</option>
+                  <option value="1">National Parties</option>
+                  <option value="2">State Parties in Maharastra</option>
+                  <option value="3">State Parties in Other States</option>
+                  <option value="4">Other Parties</option>
+                  <option value="5">Independent</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <select id="partyName" name="PartyNameID" formControlName="PartyNameID" class="form-control" size="1">
+                  <option *ngFor="let party of partyData; let i = index" [value]="party.PID">{{party.PartyName}}</option>
+                  <!-- <option value="1">Option #1</option>
+                  <option value="2">Option #2</option>
+                  <option value="3">Option #3</option> -->
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="email-input">Seat No.</label>
+              <label class="col-md-4 form-control-label">Result Date</label>
+              <label class="col-md-4 form-control-label">Bank Name</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <select id="select" name="selectPartyName" formControlName="SeatNoID" class="form-control" size="1">
+                  <option value="0">Please select</option>
+                  <option value="1">A</option>
+                  <option value="2">B</option>
+                  <option value="3">C</option>
+                  <option value="3">D</option>
+                  <option value="3">E</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <input type="date" id="text-input" name="text-input" formControlName="ResultDate" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="email-input" name="email-input" formControlName="BankName" class="form-control" placeholder="Bank Name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="email-input">Bank Account No.</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="text" id="email-input" name="email-input" formControlName="BankAccNo" class="form-control" placeholder="Enter Bank Account No.">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary" (click)="InsertExtraDetails()">
+            <i class="fa fa-dot-circle-o"></i> Submit</button>
+          <button type="reset" class="btn btn-sm btn-danger">
+            <i class="fa fa-ban"></i> Reset</button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-sm-1"></div> -->
+  </div>
+  <!-- <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Daily Expenses
+        </div>
+        <div class="card-block">
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Date registered</th>
+                <th>Role</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+
+              </tr> -->
+  <!-- <tr>
+                <td>Vishnu Serghei</td>
+                <td>2012/01/01</td>
+                <td>Member</td>
+                <td>
+                  <span class="badge badge-success">Active</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Zbyněk Phoibos</td>
+                <td>2012/02/01</td>
+                <td>Staff</td>
+                <td>
+                  <span class="badge badge-danger">Banned</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Einar Randall</td>
+                <td>2012/02/01</td>
+                <td>Admin</td>
+                <td>
+                  <span class="badge badge-default">Inactive</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Félix Troels</td>
+                <td>2012/03/01</td>
+                <td>Member</td>
+                <td>
+                  <span class="badge badge-warning">Pending</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Aulus Agmundr</td>
+                <td>2012/01/21</td>
+                <td>Staff</td>
+                <td>
+                  <span class="badge badge-success">Active</span>
+                </td>
+              </tr> -->
+  <!-- </tbody>
+          </table> -->
+  <!-- <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav> -->
+  <!-- </div>
+      </div>
+    </div> -->
+  <!--/.col-->
+  <!-- </div> -->
+</div>

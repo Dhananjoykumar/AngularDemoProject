@@ -1,0 +1,37 @@
+export class ExtraDetails {
+    ACNo: string;
+    Address: string;
+    Age: string;
+    BankAccNo: string;
+    BankName: string;
+    BlockId: string;
+    DistId: string;
+    DivisionId: string;
+    ElectionDate: string;
+    ElectionTypeID: string;
+    ElectoralColId: string;
+    FatherName: string;
+    FullName: string;
+    Id: string;
+    InsertedDate: string;
+    LocalBodyID:string;
+    LocalBodyName: string;
+    LocalBodyType: string;
+    MarketPerMoNO: string;
+    MobileNo: string;
+    ModifiedDate: string;
+    NominationDate: string;
+    OfficerName: string;
+    OrderNo: string;
+    PartyName: string;
+    PartyNameID: string;
+    PartyTypeID: string;
+    Place: string;
+    ResultDate: string;
+    RoleId: string;
+    SECNomiStatus: string;
+    SeatNoID: string;
+    Status: string;
+    TokenId: string;
+    WardNo: string;
+}

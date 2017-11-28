@@ -1,0 +1,163 @@
+<div class="animated fadeIn">
+  <!--/.row-->
+  <div class="row">
+    <!-- <div class="col-sm-1"></div> -->
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Deviation Report</strong>
+        </div>
+        <div class="card-block">
+          <form novalidate [formGroup]="deviationReport" class="form-horizontal ">
+            <!-- action="" method="post" enctype="multipart/form-data" -->
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="districtname-input">Select District Name</label>
+              <label class="col-md-4 form-control-label" for="localbodyname-input">Select LocalBody Type</label>
+              <label class="col-md-4 form-control-label" for="localbodyname-input">Select LocalBody Name</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <select id="selectDistrictName" name="selectDistrictName" class="form-control" size="1" formControlName="DistId">
+                  <!-- (change)="onDistrictChange()" -->
+                  <!-- [(ngModel)]="expense.ExpensesType" -->
+                  <option *ngFor="let district of districtData;let i = index" [value]="district.DistId">{{district.DistName}}</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <select id="selectLocalBodyType" name="selectLocalBodyType" class="form-control" size="1" (change)="onLocalBodyTypeChange()"
+                  formControlName="LocalBodyTypeId">
+                  <!-- [(ngModel)]="expense.ExpensesType" -->
+                  <!-- (change)="onExpenseChange()" -->
+                  <option value="0">Please Select</option>
+                  <option value="1">Municipal Corporation</option>
+                  <option value="2">Municipal Council</option>
+                  <option value="3">Nagar Panchayat</option>
+                  <option value="4">Zilla Parishad</option>
+                  <option value="5">Panchayat Samiti</option>
+                  <option value="6">Municipal Council</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <select id="selectLocalBody" name="selectLocalBody" class="form-control" size="1" formControlName="LocalBodyId">
+                  <!-- (change)="onSubExpenseChange()" -->
+                  <!-- [(ngModel)]="expense.SubExpenseType" -->
+                  <option *ngFor="let localBody of localBodyName;let i = index" [value]="localBody.LocalBodyId">{{localBody.LocalBodyName}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label" for="date-input">Select Date</label>
+              <label class="col-md-4 form-control-label" for="select">Select Report Type</label>
+              <label class="col-md-4 form-control-label" for="select">Ward No.</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <input type="date" id="date-input" name="date-input" class="form-control" formControlName="Date">
+                <!-- [(ngModel)]="expense.Dates" -->
+              </div>
+              <div class="col-md-4">
+                <select id="selectReportType" name="selectReportType" class="form-control" size="1" formControlName="LocalBodyTypeId">
+                  <!-- [(ngModel)]="expense.ExpensesType" -->
+                  <!-- (change)="onExpenseChange()" -->
+                  <option value="0">Please Select</option>
+                  <option value="1">Deviation</option>
+                  <option value="2">Objection</option>
+                  <option value="3">Remark</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="wardno-input" name="wardno-input" class="form-control" formControlName="WardNo" placeholder="Enter Standard Rate">
+                <!-- [(ngModel)]="expense.StandardRate" -->
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary" (click)="searchReportData()">
+            <i class="fa fa-dot-circle-o"></i> Submit</button>
+          <!-- <button type="submit" class="btn btn-sm btn-primary" (click)="updateDailyExpense()"><i class="fa fa-dot-circle-o"></i> Update</button> -->
+          <button type="reset" class="btn btn-sm btn-danger">
+            <i class="fa fa-ban"></i> Reset</button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-sm-1"></div> -->
+  </div>
+  <!-- <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Daily Expenses
+        </div>
+        <div class="card-block" id="deviation">
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Candidate Name</th>
+                <th>Mobile No</th>
+                <th>Standard Rate</th>
+                <th>Quantity</th>
+                <th>Rate</th>
+                <th>Total Expenses</th>
+                <th>Deviation(in percent)</th>
+                <th>Accepted Entry</th>
+                <th>Date of Message Sent for Objection</th>
+                <th>Vist Date for Objection</th>
+                <th>Date of Message Sent for Deviation</th>
+                <th>Vist Date for Deviation</th>
+                <th>Date of Message Sent for Remark</th>
+                <th>Vist Date for Remark</th>
+                <th>Action</th>
+                <th>Extra Entry</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <i class="fa fa-eye fa-lg mt-4" (click)="showData(myModal,exp.Id)" title="View Deviation"></i>
+                </td>
+                <td>
+                    <i class="fa fa-plus fa-lg mt-2"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav> -->
+        <!-- </div>
+      </div>
+    </div> -->
+    <!--/.col-->
+  <!-- </div> -->
+</div>
+<script>
+  function disableAmountFeild() {
+    document.getElementById("amount-input").disabled = true;
+  }
+</script>

@@ -24,5 +24,4 @@ export class MySociety {
     flatNo: string;
     societyName: string;
     image: string;
-    encryptData: string;
 }
